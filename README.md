@@ -6,6 +6,6 @@ This project is exercise 1 for the software engineering course at Mizzou. The pu
 
 ##Links
 
-*[jQuery] (https://jquery.com)
-*[D3.js] (http://d3js.org)
-*[Huffington Post API] (http://elections.huffingtonpost.com/pollster/api)
+[jQuery] (https://jquery.com)
+[D3.js] (http://d3js.org)
+[Huffington Post API] (http://elections.huffingtonpost.com/pollster/api)
