@@ -2,7 +2,7 @@
 
 **Description:**
 This project uses an API from the Huffington Post that provides polling information for
-primaries, elections, and various topics.
+primary elections.
 
 **Tools Used:**
 * [jQuery](https://jquery.com/)
