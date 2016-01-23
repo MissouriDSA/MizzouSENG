@@ -1,8 +1,7 @@
 # Exercise 1: GIT, GitHub, and D3.js
 
 **Description:**
-This project uses an API from the Huffington Post that provides polling information for
-primary elections.
+This project provides polling information for both republican and democrat primary elections.
 
 **Tools Used:**
 * [jQuery](https://jquery.com/)
