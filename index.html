@@ -7,36 +7,67 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-    
+
     <div id="graph"></div>
-    
+    <div class="pageBreak"></div>
+    <div id="graph2"></div>
+
     <script>
-        
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
-        
-        $.ajax(url, {
+
+        var GopUrl = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+
+        var DemUrl = "http://elections.huffingtonpost.com/pollster/api/charts?topic=2016-president-dem-primary";
+
+
+        function ChartDisplay(data,chartName){
+
+            //weird work around for the dem data
+            if( chartName == "Dem"){
+                data = data[0];
+                barClass = "DemBar";
+                chartName = "graph2";
+            }
+            else{
+                barClass = "bar";
+                chartName = "graph";
+            }
+
+
+            var candidateBar = d3.select("#"+chartName).selectAll("div").data(data.estimates
+                ),candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+
+            candidateWrapper.append("div")
+                .classed("choice", true)
+                .text(function(candidate) {
+                    return candidate.choice + " " + candidate.value + "%";
+            });
+
+            candidateWrapper.append("div")
+                .classed(barClass, true)
+                .transition()
+                .duration(1000)
+                .style("width", function(candidate) {
+                    return candidate.value * 10 + "px";
+            });
+        }
+
+
+        $.ajax(DemUrl, {
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
-            success: function(data) {
-                
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
-                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
-                
-                candidateWrapper.append("div")
-                    .classed("choice", true)
-                    .text(function(candidate) {
-                        return candidate.choice + " " + candidate.value + "%";
-                    });
-                
-                candidateWrapper.append("div")
-                    .classed("bar", true)
-                    .transition()
-                    .duration(1000)
-                    .style("width", function(candidate) {
-                        return candidate.value * 10 + "px";
-                    });
-                
+            success: function(data){
+                ChartDisplay(data,"Dem");
+            }
+        });
+
+
+        $.ajax(GopUrl, {
+            dataType: "jsonp",
+            jsonpCallback: "pollsterCallback",
+            cache: true,
+            success: function(data){
+                ChartDisplay(data,"Gop");
             }
         });
     </script>
