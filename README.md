@@ -1,6 +1,6 @@
 # MizzouSENG
 Mizzou Software Engineering Course
-#the	Republican	(GOP)	candidates	for	the	2016	Presidential	Election.
+#The	Democratic Primary	candidates	for	the	2016	Presidential	Election.
 This	project	uses an	API	from	the	Huffington	Post	that	provides	polling	information	for	<br>
 primaries,	elections,	and	various	topics.	It	focuses	on	the	Republican	(GOP)	candidates	for	the	<br>
 2016	Presidential	Election.<br>
