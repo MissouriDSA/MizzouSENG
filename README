@@ -1,0 +1,11 @@
+# EXERCISE 1 for CS 4320
+
+This project is to follow instructions to modify another project on github. The purpose of the project on github is listed in blockquotes below:
+>This	project	uses an	API	from	the	Huffington	Post	that	provides	polling	information	for	
+>primaries,	elections,	and	various	topics.	It	focuses	on	the	Republican	(GOP)	candidates	for	the	
+>2016	Presidential	Election. 
+
+The tools used for this project are 
+*[A Huffington Post API](http://elections.huffingtonpost.com/pollster/api)
+*[jQuery](jquery.com)
+*[D3.js](d3js.org)
