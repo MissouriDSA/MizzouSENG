@@ -7,38 +7,43 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-    
+    <h1>Democrat President Primary</h1>
     <div id="graph"></div>
     
     <script>
         
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+        function showGraph(topic) {
+            var url = "http://elections.huffingtonpost.com/pollster/api/charts?state=US&topic=" + topic;
+            $.ajax(url, {
+                dataType: "jsonp",
+                jsonpCallback: "pollsterCallback",
+                cache: true,
+                success: function(data) {
+                    
+                    //For some reason d3 requires the select() param to be of id "#graph"???
+                    var candidateBar = d3.select("#graph").selectAll("div").data(data[0].estimates);
+                    var candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+
+                    candidateWrapper.append("div")
+                        .classed("choice", true)
+                        .text(function(candidate) {
+                            return candidate.choice + " " + candidate.value + "%";
+                        });
+
+                    candidateWrapper.append("div")
+                        .classed("bar", true)
+                        .transition()
+                        .duration(1000)
+                        .style("width", function(candidate) {
+                            return candidate.value * 10 + "px";
+                        });
+
+                }
+            });
+        }
         
-        $.ajax(url, {
-            dataType: "jsonp",
-            jsonpCallback: "pollsterCallback",
-            cache: true,
-            success: function(data) {
-                
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
-                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
-                
-                candidateWrapper.append("div")
-                    .classed("choice", true)
-                    .text(function(candidate) {
-                        return candidate.choice + " " + candidate.value + "%";
-                    });
-                
-                candidateWrapper.append("div")
-                    .classed("bar", true)
-                    .transition()
-                    .duration(1000)
-                    .style("width", function(candidate) {
-                        return candidate.value * 10 + "px";
-                    });
-                
-            }
-        });
+        
+        showGraph("2016-president-dem-primary");
     </script>
 </body>
 </html>

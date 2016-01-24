@@ -2,7 +2,7 @@
 
 Uses D3.js to visualize the Democrat polls, similar to the GOP polls.
 
-Links:
-http://d3js.org
-https://jquery.com
-http://elections.huffingtonpost.com/pollster/api
+Links:<br>
+http://d3js.org<br>
+https://jquery.com<br>
+http://elections.huffingtonpost.com/pollster/api<br>
