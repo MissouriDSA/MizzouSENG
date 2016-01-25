@@ -7,14 +7,20 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-    
-    <div id="div"></div>
-
-<!--    
-	<div id="gop_div"></div>
-	<div id="dem_div"></div>
--->
-    
+ 
+ 	
+	<div id="gop_div" class="graph_container">
+		<p class="title">
+			GOP Candidates
+		</p>
+	</div>
+	
+	<div id="dem_div" class="graph_container">
+		<p class="title">
+			Democratic Candidates
+		</p>
+	</div>
+	
     <script>
         
         var gop_url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
@@ -27,7 +33,7 @@
             cache: true,
             success: function(data) {
                 
-                var candidateBar = d3.select("#div").selectAll("div").data(data.estimates),
+                var candidateBar = d3.select("#gop_div").selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
@@ -55,7 +61,7 @@
             cache: true,
             success: function(data) {
                 
-                var candidateBar = d3.select("#gop_graph").selectAll("div").data(data.estimates),
+                var candidateBar = d3.select("#dem_div").selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
@@ -74,6 +80,7 @@
                 
             }
         });
+   
         
     </script>
 </body>

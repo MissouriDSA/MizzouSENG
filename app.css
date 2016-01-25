@@ -1,7 +1,8 @@
 body {
     background-color: #EEE;
 }
-#graph .choice {
+
+.graph_container .choice {
     float: left;
     font-family: arial;
     font-size: 1.5em;
@@ -9,13 +10,23 @@ body {
     text-align: right;
     margin: 8px 5px;
 }
-#graph .bar {
+
+.graph_container .bar {
     width: 0;
     height: 35px;
     background-color: coral;
     margin: 5px;
     float: left;
 }
+
+.graph_container .title {
+	font-family: monospace;
+	font-size: 4em;
+	text-align: left;
+	background-color: #ff0000;
+	color: #ffffff;
+}
+
 .group:after {
   content: "";
   display: table;
