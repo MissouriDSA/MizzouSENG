@@ -1,7 +1,40 @@
 body {
     background-color: #EEE;
 }
-#graph .choice {
+
+#gopGraph{
+    float: right;
+}
+.gopGroup:after {
+  content: "";
+  display: table;
+  clear: right;
+}
+#gopGraph .choice {
+    float: right;
+    font-family: arial;
+    font-size: 1.5em;
+    min-width: 200px;
+    text-align: left;
+    margin: 8px 5px;
+}
+#gopGraph .bar {
+    width: 0;
+    height: 35px;
+    background-color: red;
+    margin: 5px;
+    float: right;
+}
+
+#demGrpah{
+    float: left;
+}
+.demGroup:after {
+  content: "";
+  display: table;
+  clear: left;
+}
+#demGraph .choice {
     float: left;
     font-family: arial;
     font-size: 1.5em;
@@ -9,15 +42,10 @@ body {
     text-align: right;
     margin: 8px 5px;
 }
-#graph .bar {
+#demGraph .bar {
     width: 0;
     height: 35px;
-    background-color: coral;
+    background-color: blue;
     margin: 5px;
     float: left;
-}
-.group:after {
-  content: "";
-  display: table;
-  clear: both;
 }
