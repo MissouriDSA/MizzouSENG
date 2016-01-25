@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <div id="graph"></div>
+    <div id="graph"><h1>2016 Republican Presidential Candidates</h1></div>
     
     <script>
         
@@ -40,5 +40,40 @@
             }
         });
     </script>
+
+    <div id="graph2"><hr><h1>2016 Democratic Presidential Candidates</h1></div>
+    
+    <script>
+        
+        var url2 = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
+        
+        $.ajax(url2, {
+            dataType: "jsonp",
+            jsonpCallback: "pollsterCallback",
+            cache: true,
+            success: function(data) {
+                
+                var candidateBar2 = d3.select("#graph2").selectAll("div").data(data.estimates),
+                    candidateWrapper2 = candidateBar2.enter().append("div").classed("group", true);
+                
+                candidateWrapper2.append("div")
+                    .classed("choice", true)
+                    .text(function(candidate) {
+                        return candidate.choice + " " + candidate.value + "%";
+                    });
+                
+                candidateWrapper2.append("div")
+                    .classed("bar", true)
+                    .transition()
+                    .duration(1000)
+                    .style("width", function(candidate) {
+                        return candidate.value * 10 + "px";
+                    });
+                
+            }
+        });
+    </script>
+
+
 </body>
 </html>
