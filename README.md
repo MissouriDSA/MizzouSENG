@@ -1,6 +1,8 @@
 #MizzouSENG
 ##Description
-When	the	application	loads,	it	retrieves	a	list	of	the	GOP	candidates	and	uses	a	data	visualization	library	called	D3.js	to	plot	a	bar	graph	of	each	candidate’s	standing	in	the	polls.
+This is the first exercise!
+These are links to jQuery D3.js and the Huffington Post API.
+This is the view of 2016 democratic selections.
 ##Links
 * [jQuery](https://jquery.com/)
 * [D3.js](http://d3js.org/)
