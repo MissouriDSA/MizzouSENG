@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Presidential Primary Data 2016</title>
+    <title>Presidential Democratic Primary Data 2016</title>
+     <slug>2016-president-dem-primary</slug>
+    <topic>2016-presient-dem-primary</topic>
     <link href="app.css" rel="stylesheet" type="text/css">
     <script src="jquery-1.12.0.min.js"></script>
     <script src="d3.v3.min.js"></script>
@@ -12,7 +14,7 @@
     
     <script>
         
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+        var url = "http://elections.huffingtonpost.com/pollster/2016-president-dem-primary";
         
         $.ajax(url, {
             dataType: "jsonp",
@@ -38,6 +40,25 @@
                     });
                 
             }
+            
+            "estimates":[
+    
+                {
+                  "choice":"Clinton"
+                },
+                {
+                  "choice":"Sanders"
+                },
+                {
+                  "choice":"O'Malley"
+                },
+                {
+                  "choice":"Undecided"
+                },
+                {
+                  "choice":"Other"
+                }
+            ],
         });
     </script>
 </body>
