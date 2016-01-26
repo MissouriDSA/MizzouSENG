@@ -1,5 +1,6 @@
 #MizzouSENG
 
+Mizzou Software Engineering Course Exercise 1
 
 ##Description
 This is a project created for CS4320 Software Engineering, Exercise	1.
