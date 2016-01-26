@@ -5,4 +5,4 @@ When	the	application	loads,	it	retrieves	a	list	of	the	GOP	candidates	and	uses	a
 ##Links
 * [jQuery](https://jquery.com/)
 * [D3.js](http://d3js.org/)
-* [the	Huffington	Post	API](https://github.com/huffingtonpost)
+* [the	Huffington	Post	API](http://elections.huffingtonpost.com/pollster/api)
