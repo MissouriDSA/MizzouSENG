@@ -8,7 +8,9 @@
 </head>
 <body>
     
-    <div id="graph"></div>
+    <div class="graph" id="g1"></div>
+    
+    <div class="graph" id="g2"></div>
     
     <script>
         
@@ -18,9 +20,10 @@
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
-            success: function(data) {
+            success: function(data) 
+            {
                 
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+                var candidateBar = d3.select("#g1").selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
@@ -37,8 +40,42 @@
                         return candidate.value * 10 + "px";
                     });
                 
+                callNext();
             }
+            
         });
+        
+        
+        var urlDem = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
+ 				
+        function callNext()
+        {
+            $.ajax(urlDem, {
+                dataType: "jsonp",
+                jsonpCallback: "pollsterCallback",
+                cache: true,
+                success: function(data) {
+                    
+                var candidateBar = d3.select("#g2").selectAll("div").data(data.estimates),
+                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                
+                candidateWrapper.append("div")
+                    .classed("choice", true)
+                    .text(function(candidate) {
+                        return candidate.choice + " " + candidate.value + "%";
+                    });
+                
+                candidateWrapper.append("div")
+                    .classed("bar", true)
+                    .transition()
+                    .duration(1000)
+                    .style("width", function(candidate) {
+                        return candidate.value * 10 + "px";
+                    });
+                    
+                }});
+        }
+     
     </script>
 </body>
 </html>
