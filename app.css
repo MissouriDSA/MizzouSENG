@@ -9,14 +9,35 @@ body {
     text-align: right;
     margin: 8px 5px;
 }
+#graph1 .choice {
+    float: left;
+    font-family: arial;
+    font-size: 1.5em;
+    min-width: 200px;
+    text-align: right;
+    margin: 8px 5px;
+}
 #graph .bar {
     width: 0;
     height: 35px;
-    background-color: coral;
+    background-color: red;
+    margin: 5px;
+    float: left;
+}
+#graph1 .bar1{
+	width: 0;
+    height: 35px;
+    background-color: blue;
     margin: 5px;
     float: left;
 }
 .group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.group1:after {
   content: "";
   display: table;
   clear: both;
