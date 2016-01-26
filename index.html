@@ -22,7 +22,7 @@
             jsonpCallback: "pollsterCallback",
             cache: true,
             success: function(data) {
-                makeGraph("#graph2", data);
+                makeGraph("#graph", data);
             }
         });
 
@@ -31,7 +31,7 @@
             jsonpCallback: "pollsterPoll",
             cache: true,
             success: function(data) {
-                makeGraph("#graph", data);
+                makeGraph("#graph2", data);
             }
         });
 
