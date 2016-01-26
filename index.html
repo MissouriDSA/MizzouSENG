@@ -7,9 +7,10 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-    
-    <div id="graph"></div>
+    <h2>Democratic Primary Polls</h2>
     <div id="graph2"></div>
+    <h2>GOP Primary Polls</h2>
+    <div id="graph"></div>
     
     <script>
         
@@ -48,7 +49,7 @@
             cache: true,
             success: function(data) {
                 
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates);
+                var candidateBar = d3.select("#graph2").selectAll("div").data(data.estimates);
                 var candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
