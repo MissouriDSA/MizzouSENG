@@ -3,41 +3,116 @@
 <head>
     <title>Presidential Primary Data 2016</title>
     <link href="app.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="jquery-1.12.0.min.js"></script>
     <script src="d3.v3.min.js"></script>
+
+    <style type="text/css">
+        html, body {
+            text-align: center;
+            padding-bottom: 100px;
+        }
+        #gopgraph .choice {
+            float: left;
+            font-family: arial;
+            font-size: 1.5em;
+            min-width: 200px;
+            text-align: right;
+            margin: 8px 5px;
+        }
+        #gopgraph .bar {
+            width: 0;
+            height: 35px;
+            background-color: coral;
+            margin: 5px;
+            float: left;
+        }
+        #demgraph .choice {
+            float: left;
+            font-family: arial;
+            font-size: 1.5em;
+            min-width: 200px;
+            text-align: right;
+            margin: 8px 5px;
+        }
+        #demgraph .bar {
+            width: 0;
+            height: 35px;
+            background-color: coral;
+            margin: 5px;
+            float: left;
+        }
+    </style>
 </head>
 <body>
-    
-    <div id="graph"></div>
-    
+    <div class="container">
+        <h1>GOP Polls</h1>
+        <div id="gopgraph"></div>
+
+        <h1>Democrat Polls</h1>
+        <div id="demgraph"></div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>
-        
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
-        
-        $.ajax(url, {
-            dataType: "jsonp",
-            jsonpCallback: "pollsterCallback",
-            cache: true,
-            success: function(data) {
-                
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
-                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
-                
-                candidateWrapper.append("div")
-                    .classed("choice", true)
-                    .text(function(candidate) {
-                        return candidate.choice + " " + candidate.value + "%";
-                    });
-                
-                candidateWrapper.append("div")
-                    .classed("bar", true)
-                    .transition()
-                    .duration(1000)
-                    .style("width", function(candidate) {
-                        return candidate.value * 10 + "px";
-                    });
-                
-            }
+        $( document ).ready(function() {
+            //Fetch GOP Polls
+            var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+            
+            $.ajax(url, {
+                dataType: "jsonp",
+                jsonpCallback: "pollsterCallback",
+                cache: true,
+                success: function(data) {
+                    
+                    var candidateBar = d3.select('#gopgraph').selectAll("div").data(data.estimates),
+                        candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                    
+                    candidateWrapper.append("div")
+                        .classed("choice", true)
+                        .text(function(candidate) {
+                            return candidate.choice + " " + candidate.value + "%";
+                        });
+                    
+                    candidateWrapper.append("div")
+                        .classed("bar", true)
+                        .transition()
+                        .duration(1000)
+                        .style("width", function(candidate) {
+                            return candidate.value * 10 + "px";
+                        });
+                    
+                }
+            });
+
+            //Fetch Democratic Polls
+            var url1 = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
+            
+            $.ajax(url1, {
+                dataType: "jsonp",
+                jsonpCallback: "pollsterCallback",
+                cache: true,
+                success: function(data) {
+                    
+                    var candidateBar = d3.select("#demgraph").selectAll("div").data(data.estimates),
+                        candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                    
+                    candidateWrapper.append("div")
+                        .classed("choice", true)
+                        .text(function(candidate) {
+                            return candidate.choice + " " + candidate.value + "%";
+                        });
+                    
+                    candidateWrapper.append("div")
+                        .classed("bar", true)
+                        .transition()
+                        .duration(1000)
+                        .style("width", function(candidate) {
+                            return candidate.value * 10 + "px";
+                        });
+                    
+                }
+            });
         });
     </script>
 </body>
