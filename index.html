@@ -12,15 +12,15 @@
     <script>
 		var url1 = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
 		var url2 = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
-		graph(url1, '#graph1');
-		graph(url2, '#graph2');
+		graph(url1, '#graph1', 'pollsterCallback');
+		graph(url2, '#graph2', 'pollsterPoll');
 
-		function graph(url, id) {
+		function graph(url, id, callback) {
 			$.ajax(url, {
 			dataType: "jsonp",
 			type: 'GET',
 			cache: true,
-			jsonpCallback: "pollsterCallback",
+			jsonpCallback: callback,
 			success: function(data) {
 				var candidateBar = d3.select(id).selectAll("div").data(data.estimates),
 					candidateWrapper = candidateBar.enter().append("div").classed("group", true);
