@@ -8,19 +8,26 @@
 </head>
 <body>
     
-    <div id="graph"></div>
-    
+    <div id="gop"><h1 class = "title">Republicans</h1></div>
+    <div id ="dem"><h1 class = "title">Democrats</h1></div>
     <script>
-        
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
-        
-        $.ajax(url, {
+
+var urls = [{url: "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-GOP-primary",div: '#gop'}, {url: "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary", div: '#dem'}],curr = 0;
+
+function run_ajax(){
+	if(curr < urls.length){
+	
+	var currDiv = urls[curr].div;
+
+        $.ajax({
+	    url:  urls[curr].url,
+	    currDiv: urls[curr].div,
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
             success: function(data) {
                 
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+                var candidateBar = d3.select(currDiv).selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
@@ -36,9 +43,16 @@
                     .style("width", function(candidate) {
                         return candidate.value * 10 + "px";
                     });
-                
-            }
+           	curr++;
+		run_ajax();
+	    }
         });
-    </script>
+   }
+}
+run_ajax();
+
+</script>
+	
+
 </body>
 </html>
