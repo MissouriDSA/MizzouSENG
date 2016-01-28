@@ -8,7 +8,11 @@
 </head>
 <body>
     
-    <div id="graph"></div>
+    <H2>Republicans</H2>
+    <div id="repGraph"></div>
+    
+    <H2>Democrats</H2>
+    <div id="demGraph"></div>
     
     <script>
         
@@ -39,6 +43,35 @@
                 
             }
         });
+        
+        var dem = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+        
+        $.ajax(dem, {
+            dataType: "jsonp",
+            jsonpCallback: "pollsterCallback",
+            cache: true,
+            success: function(data) {
+                
+                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                
+                candidateWrapper.append("div")
+                    .classed("choice", true)
+                    .text(function(candidate) {
+                        return candidate.choice + " " + candidate.value + "%";
+                    });
+                
+                candidateWrapper.append("div")
+                    .classed("bar", true)
+                    .transition()
+                    .duration(1000)
+                    .style("width", function(candidate) {
+                        return candidate.value * 10 + "px";
+                    });
+                
+            }
+        });
+        
     </script>
 </body>
 </html>
