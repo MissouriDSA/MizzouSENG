@@ -23,8 +23,6 @@ body {
 	font-family: monospace;
 	font-size: 4em;
 	text-align: left;
-	background-color: #ff0000;
-	color: #ffffff;
 }
 
 .group:after {
