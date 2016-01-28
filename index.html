@@ -7,14 +7,16 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-    
+	<h2>Republican</h2>
     <div id="graph"></div>
-    
+	</br>
+	<h2>Democratic</h2>
+    <div id="graph1"></div>
     <script>
+       
+        var R_url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
         
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
-        
-        $.ajax(url, {
+        $.ajax(R_url, {
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
@@ -22,6 +24,34 @@
                 
                 var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                
+                candidateWrapper.append("div")
+                    .classed("choice", true)
+                    .text(function(candidate) {
+                        return candidate.choice + " " + candidate.value + "%";
+                    });
+                
+                candidateWrapper.append("div")
+                    .classed("bar", true)
+                    .transition()
+                    .duration(1000)
+                    .style("width", function(candidate) {
+                        return candidate.value * 10 + "px";
+                    });
+                
+            }
+        });
+		
+		var D_url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
+        
+        $.ajax(D_url, {
+            dataType: "jsonp",
+            jsonpCallback: "pollsterCallback",
+            cache: true,
+            success: function(data) {
+                
+                var candidateBar = d3.select("#graph1").selectAll("div").data(data.estimates),
+                    candidateWrapper = candidateBar.enter().append("div").classed("group1", true);
                 
                 candidateWrapper.append("div")
                     .classed("choice", true)
