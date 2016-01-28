@@ -7,28 +7,58 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-    
-    <div id="graph"></div>
-    
-    <script>
-        
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
-        
-        $.ajax(url, {
+    <div id="wrapper">
+        <h3>GOP Candidates</h3>
+        <div id="graph"></div>
+        <h3>Democratic Candidates</h3>
+        <div id="demgraph"></div>
+
+        <script>
+
+            var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+            var demurl = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
+
+            $.ajax(url, {
+                dataType: "jsonp",
+                jsonpCallback: "pollsterCallback",
+                cache: true,
+                success: function(data) {
+
+                    var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+                        candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+
+                    candidateWrapper.append("div")
+                        .classed("choice", true)
+                        .text(function(candidate) {
+                            return candidate.choice + " " + candidate.value + "%";
+                        });
+
+                    candidateWrapper.append("div")
+                        .classed("bar", true)
+                        .transition()
+                        .duration(1000)
+                        .style("width", function(candidate) {
+                            return candidate.value * 10 + "px";
+                        });
+
+                }
+            });
+
+            $.ajax(demurl, {
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
             success: function(data) {
-                
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+
+                var candidateBar = d3.select("#demgraph").selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
-                
+
                 candidateWrapper.append("div")
                     .classed("choice", true)
                     .text(function(candidate) {
                         return candidate.choice + " " + candidate.value + "%";
                     });
-                
+
                 candidateWrapper.append("div")
                     .classed("bar", true)
                     .transition()
@@ -36,9 +66,10 @@
                     .style("width", function(candidate) {
                         return candidate.value * 10 + "px";
                     });
-                
-            }
-        });
-    </script>
+
+                }
+            });
+        </script>
+    </div>
 </body>
 </html>
