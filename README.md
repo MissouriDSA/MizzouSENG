@@ -1,5 +1,5 @@
 ##Mizzou SENG GOP Polling App
-This app uses the D3.js visualization library to compile updated graphs visualizing the current GOP nomination standings between candidates.
+This app uses the D3.js visualization library to compile updated graphs visualizing the current presidential nomination standings between candidates in both GOP and Democrat parties.
  
 ###Tools used
 * [jQuery](https://jquery.com/)
