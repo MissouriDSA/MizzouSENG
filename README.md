@@ -10,6 +10,9 @@ It also gets data from the GOP candidates and uses javascript to display graphs 
 
 JQuery:
     https://jquery.com/
+    
+D3.js:
+    http://d3js.org/
   
 Pollster API:
     http://elections.huffingtonpost.com/pollster/api
