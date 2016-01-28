@@ -8,36 +8,78 @@
 </head>
 <body>
     
-    <div id="graph"></div>
+    <h2>GOP Candidates</h2>
+    <div id="gopGraph" class="graph"></div>
+    
+    <hr>
+    
+    <h2>Democratic Candidates</h2>
+    <div id="demGraph" class="graph"></div>
     
     <script>
         
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+        var baseUrl = "http://elections.huffingtonpost.com/pollster/api/charts";
+        var gopUrl = baseUrl + "/2016-national-gop-primary";
+        var demUrl = baseUrl + "/2016-national-democratic-primary";
         
-        $.ajax(url, {
-            dataType: "jsonp",
-            jsonpCallback: "pollsterCallback",
-            cache: true,
-            success: function(data) {
-                
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
-                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
-                
-                candidateWrapper.append("div")
-                    .classed("choice", true)
-                    .text(function(candidate) {
-                        return candidate.choice + " " + candidate.value + "%";
-                    });
-                
-                candidateWrapper.append("div")
-                    .classed("bar", true)
-                    .transition()
-                    .duration(1000)
-                    .style("width", function(candidate) {
-                        return candidate.value * 10 + "px";
-                    });
-                
-            }
+        function pollsterCallback(data) {
+        }
+        
+        $(document).ready(function() {
+       
+            $.ajax(gopUrl, {
+                dataType: "jsonp",
+                jsonpCallback: "pollsterCallback",
+                cache: true,
+                success: function(data) {
+                    console.log("gop");
+                    
+                    var candidateBar = d3.select("#gopGraph").selectAll("div").data(data.estimates);
+                    candidateBar.exit().remove();
+                    var candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                    
+                    candidateWrapper.append("div")
+                        .classed("choice", true)
+                        .text(function(candidate) {
+                            return candidate.choice + " " + candidate.value + "%";
+                        });
+                    
+                    candidateWrapper.append("div")
+                        .classed("bar", true)
+                        .transition()
+                        .duration(1000)
+                        .style("width", function(candidate) {
+                            return candidate.value * 10 + "px";
+                        });
+                }
+            });
+            
+            $.ajax(demUrl, {
+                dataType: "jsonp",
+                jsonpCallback: "pollsterCallback",
+                cache: true,
+                success: function(data) {
+                    console.log("dem");
+                    
+                    var candidateBar = d3.select("#demGraph").selectAll("div").data(data.estimates);
+                    candidateBar.exit().remove();
+                    var candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                    
+                    candidateWrapper.append("div")
+                        .classed("choice", true)
+                        .text(function(candidate) {
+                            return candidate.choice + " " + candidate.value + "%";
+                        });
+                    
+                    candidateWrapper.append("div")
+                        .classed("bar", true)
+                        .transition()
+                        .duration(1000)
+                        .style("width", function(candidate) {
+                            return candidate.value * 10 + "px";
+                        });
+                }
+            });
         });
     </script>
 </body>
