@@ -12,9 +12,11 @@
     
     <script>
         
+        var urls = "http://elections.huffingtonpost.com/pollster/api/charts/2016-florida-presidential-democratic-primary";
         var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+        // did we need both at the same time? that doesn't make sense because 2 primaries, I just have the Dem one now
         
-        $.ajax(url, {
+        $.ajax(urls, {
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
