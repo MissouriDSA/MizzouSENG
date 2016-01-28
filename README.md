@@ -6,5 +6,7 @@ webpage that has graphs for the republican and democratic candidates for the 201
 generated using jQuery, D3.js, and the Huffington Post API.
 
 jQuery: https://jquery.com/
+
 D3.js http://d3js.org/
+
 Huffington Post API: http://elections.huffingtonpost.com/pollster/api/
