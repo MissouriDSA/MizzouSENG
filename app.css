@@ -1,23 +1,67 @@
 body {
-    background-color: #EEE;
+    background-image: url("https://leavittcenterforpolitics.files.wordpress.com/2013/04/politics.jpg");
+    background-repeat: no-repeat;
+    background-size:cover
 }
-#graph .choice {
+
+#republicans{
+    float:left;
+    
+    display: table-row;
+}
+#democrats{
+    float:right;
+   
+    display: table-row;
+}
+
+#republicans .choice {
     float: left;
     font-family: arial;
     font-size: 1.5em;
+    color: black;
+
     min-width: 200px;
     text-align: right;
     margin: 8px 5px;
 }
-#graph .bar {
+
+#republicans .bar {
     width: 0;
     height: 35px;
-    background-color: coral;
-    margin: 5px;
+    background-color: red;
     float: left;
+    
 }
+
 .group:after {
   content: "";
   display: table;
   clear: both;
+}
+
+#democrats .choice {
+    float: right;
+    font-family: arial;
+    font-size: 1.5em;
+    color: black;
+    
+    min-width: 200px;
+    text-align: right;
+    margin: 8px 5px;
+}
+
+#democrats .bar {
+    width: 0;
+    height: 35px;
+    background-color: blue;
+    float: right;
+}
+
+.title{
+    color: black;
+    
+    text-align: center;
+    font-family: arial;
+    font-size: 2em;
 }

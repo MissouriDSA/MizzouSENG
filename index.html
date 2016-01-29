@@ -7,22 +7,33 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-	<h2>Republican</h2>
-    <div id="graph"></div>
-	</br>
-	<h2>Democratic</h2>
-    <div id="graph1"></div>
-    <script>
-       
-        var R_url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
-        
-        $.ajax(R_url, {
-            dataType: "jsonp",
-            jsonpCallback: "pollsterCallback",
-            cache: true,
-            success: function(data) {
+    
+    <div id="republicans"><h1 class = "title">Republicans</h1></div>
+    <div id ="democrats"><h1 class = "title">Democrats</h1></div>
+
+<!--                       
+================================================================================
+                            Script that loads graphs
+================================================================================
+-->
+<script>
+
+var data = [{url: "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-GOP-primary",div: '#republicans'}, {url: "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary", div: '#democrats'}],count = 0;
+
+function run_ajax(){
+	if(count < data.length){
+	
+	var newDiv = data[count].div;
+
+    $.ajax({
+	   url:  data[count].url,
+	   newDiv: data[count].div,
+       dataType: "jsonp",
+       jsonpCallback: "pollsterCallback",
+       cache: true,
+       success: function(data) {
                 
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+                var candidateBar = d3.select(newDiv).selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
@@ -38,37 +49,16 @@
                     .style("width", function(candidate) {
                         return candidate.value * 10 + "px";
                     });
-                
-            }
+           	count++;
+		run_ajax();
+	    }
         });
-		
-		var D_url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
-        
-        $.ajax(D_url, {
-            dataType: "jsonp",
-            jsonpCallback: "pollsterCallback",
-            cache: true,
-            success: function(data) {
-                
-                var candidateBar = d3.select("#graph1").selectAll("div").data(data.estimates),
-                    candidateWrapper = candidateBar.enter().append("div").classed("group1", true);
-                
-                candidateWrapper.append("div")
-                    .classed("choice", true)
-                    .text(function(candidate) {
-                        return candidate.choice + " " + candidate.value + "%";
-                    });
-                
-                candidateWrapper.append("div")
-                    .classed("bar", true)
-                    .transition()
-                    .duration(1000)
-                    .style("width", function(candidate) {
-                        return candidate.value * 10 + "px";
-                    });
-                
-            }
-        });
-    </script>
+   }
+}
+run_ajax();
+
+</script>
+	
+
 </body>
 </html>
