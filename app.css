@@ -16,6 +16,12 @@ body {
     margin: 5px;
     float: left;
 }
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 #graph2 .choice {
     float: left;
     font-family: arial;
@@ -31,7 +37,7 @@ body {
     margin: 5px;
     float: left;
 }
-.group:after {
+.group2:after {
   content: "";
   display: table;
   clear: both;
