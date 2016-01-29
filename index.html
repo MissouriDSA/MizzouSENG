@@ -19,7 +19,7 @@
             success: function(data) {
                 
                 var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
-                    candidateWrapper = candidateBar.enter().append("div").classed("gopgroup", true);
+                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
                     .classed("choice", true)
