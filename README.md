@@ -1,4 +1,4 @@
-# MizzouSENG
+# MizzouSENG Exercise 1: Git, GitHub, and D3.js
 **Mizzou Software Engineering Course**
 
 This project uses an API from the Huffington Post that provides polling information for primaries, elections, and various topics. 
