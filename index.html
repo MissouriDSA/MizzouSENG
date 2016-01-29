@@ -45,12 +45,12 @@
         
         $.ajax(demurl, {
             dataType: "jsonp",
-            jsonpCallback: "pollisterCallback",
+            jsonpCallback: "pollsterCallback",
             cache: true,
             success: function(data) {
                 
                 var candidateBar = d3.select("#graph2").selectAll("div").data(data.estimates),
-                    candidateWrapper = candidateBar.enter().append("div").classed("demgroup", true);
+                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
                     .classed("choice", true)
