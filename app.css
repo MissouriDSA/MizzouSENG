@@ -1,7 +1,8 @@
 body {
     background-color: #EEE;
 }
-#graph .choice {
+
+#GOPgraph .choice, #DEMgraph .choice {
     float: left;
     font-family: arial;
     font-size: 1.5em;
@@ -9,13 +10,19 @@ body {
     text-align: right;
     margin: 8px 5px;
 }
-#graph .bar {
+
+#GOPgraph .bar, #DEMgraph .bar {
     width: 0;
     height: 35px;
-    background-color: coral;
+    background-color: red;
     margin: 5px;
     float: left;
 }
+
+#DEMgraph .bar {
+    background-color: blue;
+}
+
 .group:after {
   content: "";
   display: table;
