@@ -8,19 +8,33 @@
 </head>
 <body>
     
-    <div id="graph"></div>
+    
+    <h1>GOP Polls</h1>
+    <div id="gopGraph"></div>
+
+    <hr>
+    
+    <h1>Democratic Polls</h1>
+    <div id="demGraph"></div>
     
     <script>
         
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+        function pollsterCallback(data) {
+        }
+       
+ $(document).ready(function(){ 
+ 
+                   
+                   
+        var GOPurl = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
         
-        $.ajax(url, {
+        $.ajax(GOPurl, {
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
             success: function(data) {
                 
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+                var candidateBar = d3.select("#gopGraph").selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
                 
                 candidateWrapper.append("div")
@@ -39,6 +53,39 @@
                 
             }
         });
+	
+
+
+	var DEMurl = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-promary";
+        
+        $.ajax(DEMurl, {
+            dataType: "jsonp",
+            jsonpCallback: "pollsterCallback",
+            cache: true,
+            success: function(data) {
+                
+                var candidateBar = d3.select("#demGraph").selectAll("div").data(data.estimates),
+                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+                
+                candidateWrapper.append("div")
+                    .classed("choice", true)
+                    .text(function(candidate) {
+                        return candidate.choice + " " + candidate.value + "%";
+                    });
+                
+                candidateWrapper.append("div")
+                    .classed("bar", true)
+                    .transition()
+                    .duration(1000)
+                    .style("width", function(candidate) {
+                        return candidate.value * 10 + "px";
+                    });
+                
+            }
+        });
+ }
+
+	
     </script>
 </body>
 </html>
