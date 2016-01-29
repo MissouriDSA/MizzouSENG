@@ -9,6 +9,9 @@
 <body>
     <h1>National GOP Primary</h1>
     <div id="graph"></div>
+    <br>
+    <h1>National Democratic Primary</h1>
+    <div id = "graph2"></div>
     <script>
         var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
         
@@ -37,14 +40,10 @@
                 
             }
         });
-    </script>
-    <br>
-    <h1>National Democratic Primary</h1>
-    <div id = "graph2"></div>
-    <script>
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
         
-        $.ajax(url, {
+        var demurl = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
+        
+        $.ajax(demurl, {
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
