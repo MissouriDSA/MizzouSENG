@@ -10,5 +10,8 @@ http://elections.huffingtonpost.com/pollster/api
 When the application loads, it retrieves a list of the GOP candidates and uses a data
 visualization library called D3.js to plot a bar graph of each candidate’s standing in the polls.
 
+Jquery and its documentation can be found here:
+https://jquery.com/
 
-
+D3.js is avaialable from:
+http://d3js.org/
