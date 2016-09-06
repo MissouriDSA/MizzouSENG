@@ -18,3 +18,6 @@ My visualization change is slightly different. I used a different url to gather 
 long decimals gave me a headache. The rounding function also had the unintended effect of lining all of the candidates up nice and neat.
 ####Geoff Husser
 For my visualizer I changed the bar graph and the background color to something not quite as harsh (to black and beige, respectively). I also removed any candidate with less than 5% as at this point in the race, they've become inconsequential.
+
+#TO DO 
+Need to take the three visualizations that are individually submitted and combine them to one "master" index file
