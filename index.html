@@ -7,38 +7,78 @@
     <script src="d3.v3.min.js"></script>
 </head>
 <body>
-    
-    <div id="graph"></div>
-    
+    <div id="wrap">
+      <div id="left_col">
+          <h1>Republican</h1>
+          <div id="graph_gop"></div>
+      </div>
+      <div id="right_col">
+          <h1>Democratic</h1>
+          <div id="graph_dem"></div>
+      </div>
+    </div>
+
     <script>
-        
-        var url = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
-        
-        $.ajax(url, {
+        var url_gop = "http://elections.huffingtonpost.com/pollster/api/charts/2016-national-gop-primary";
+        $.ajax(url_gop, {
             dataType: "jsonp",
             jsonpCallback: "pollsterCallback",
             cache: true,
             success: function(data) {
-                
-                var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+
+                var candidateBar = d3.select("#graph_gop").selectAll("div").data(data.estimates),
                     candidateWrapper = candidateBar.enter().append("div").classed("group", true);
-                
+
                 candidateWrapper.append("div")
                     .classed("choice", true)
                     .text(function(candidate) {
                         return candidate.choice + " " + candidate.value + "%";
                     });
-                
+
                 candidateWrapper.append("div")
                     .classed("bar", true)
                     .transition()
                     .duration(1000)
                     .style("width", function(candidate) {
-                        return candidate.value * 10 + "px";
+                        return candidate.value * 4 + "px";
                     });
-                
+
+            }
+
+        }
+        
+              );
+
+        });
+        var url_dem="http://elections.huffingtonpost.com/pollster/api/charts/2016-national-democratic-primary";
+        $.ajax(url_dem, {
+            dataType: "jsonp",
+            jsonpCallback: "pollsterCallback",
+            cache: true,
+            success: function(data) {
+
+                var candidateBar = d3.select("#graph_dem").selectAll("div").data(data.estimates),
+                    candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+
+                candidateWrapper.append("div")
+                    .classed("choice", true)
+                    .text(function(candidate) {
+                        return candidate.choice + " " + candidate.value + "%";
+                    });
+
+                candidateWrapper.append("div")
+                    .classed("bar", true)
+                    .transition()
+                    .duration(1000)
+                    .style("width", function(candidate) {
+                        return candidate.value * 4 + "px";
+                    });
+
             }
         });
+
+
+
     </script>
 </body>
 </html>
