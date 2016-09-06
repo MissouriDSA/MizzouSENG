@@ -3,8 +3,8 @@
 ## Description of the project
 
 ## Links to the tools
-＊ jQuery: 
-＊ js: 
-＊ Huffington Post API: http://elections.huffingtonpost.com/pollster/api - automatic!
+* [jQuery](https://jquery.com)
+* [D3.js](https://d3js.org)
+* [Huffington Post API](http://elections.huffingtonpost.com/pollster/api)
 
 ## More description
