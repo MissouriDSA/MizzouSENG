@@ -1,7 +1,19 @@
 body {
     background-color: #EEE;
 }
-#graph .choice {
+#wrap {
+  width: 100%;
+  margin: 0 auto;
+}
+#left_col {
+  float: left;
+  width: 50%;
+}
+#right_col {
+  float: right;
+  width: 50%;
+}
+#graph_gop .choice {
     float: left;
     font-family: arial;
     font-size: 1.5em;
@@ -9,10 +21,25 @@ body {
     text-align: right;
     margin: 8px 5px;
 }
-#graph .bar {
+#graph_gop .bar {
     width: 0;
     height: 35px;
     background-color: coral;
+    margin: 5px;
+    float: left;
+}
+#graph_dem .choice {
+    float: left;
+    font-family: arial;
+    font-size: 1.5em;
+    min-width: 200px;
+    text-align: right;
+    margin: 8px 5px;
+}
+#graph_dem .bar {
+    width: 0;
+    height: 35px;
+    background-color: blue;
     margin: 5px;
     float: left;
 }
