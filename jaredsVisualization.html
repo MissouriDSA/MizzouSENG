@@ -22,12 +22,17 @@
 				jsonpCallback: "pollsterCallback",
 				cache: true,
 				success: function(data) {
-						var candidateBar = d3.select("#graph").selectAll("div").data(data.estimates),
+						var graph = d3.select("#graph");
+						graph.append("h1").classed("title", true).text("Poll Information");
+						var title = d3.select("h1");
+						title.style("color", "gold");
+	
+						var candidateBar = graph.selectAll("div").data(data.estimates),
 						candidateWrapper = candidateBar.enter().append("div").classed("group", true);
 						candidateWrapper.append("div")
 							.classed("choice", true)
 							.text(function(candidate) {
-									return candidate.choice + " " + candidate.value + "%";
+									return candidate.choice + " " + Number(candidate.value).toFixed(2) + "%";
 							}).style("color", "white");
 						candidateWrapper.append("div")
 							.classed("bar", true)
@@ -38,7 +43,10 @@
 							});
 							
 							var allBars = d3.selectAll("div.bar");
-							allBars.style("background-color", "blue");
+							allBars.style("background-color", "gold");
+							allBars.style("border-width", "5px");
+							allBars.style("border-color", "gray");
+							allBars.style("border-style" , "solid");
 							var allNames = d3.selectAll("div.choice");
 							allNames.style("width", "400px");
 				}

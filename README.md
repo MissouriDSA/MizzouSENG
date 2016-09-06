@@ -12,7 +12,9 @@ Huffington Post API for candidate data: [link] (http://elections.huffingtonpost.
 ###Visualizations
 
 ####Jared Welch
-My visualization is a simple UI change to make the graphs more readable. First, I changed the data to represent the democratic presidential candidates, as outlined in the assignment description. Second, I changed the background color, font color, and bar colors in order to make them look more visually appealing. Finally, I adjusted the width of the labels for each bar in order to make the graph look more organized. 
-
+My visualization is a simple UI change to make the graphs more readable. First, I changed the data to represent the democratic presidential candidates, as outlined in the assignment description. Second, I changed the background color, font color, and bar colors in order to make them look more visually appealing. Font was changed and the numbers were formatted to be displayed to the user(formatted to 2 decimal places). I also added a title to the graph. Finally, I adjusted the width of the labels for each bar in order to make the graph look more organized. 
 ####Andrew Stoll
-My visualization change is slightly different. I used a different url to gather information on the national democtatic primary polls. I colored the bars blue to reflect the democratic color. I also rounded the decimals to two spots, because the long decimals gave me a headache. The rounding function also had the unintended effect of lining all of the candidates up nice and neat.
+My visualization change is slightly different. I used a different url to gather information on the national democtatic primary polls. I colored the bars blue to reflect the democratic color. I also rounded the decimals to two spots, because the
+long decimals gave me a headache. The rounding function also had the unintended effect of lining all of the candidates up nice and neat.
+####Geoff Husser
+For my visualizer I changed the bar graph and the background color to something not quite as harsh (to black and beige, respectively). I also removed any candidate with less than 5% as at this point in the race, they've become inconsequential.
