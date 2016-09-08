@@ -11,6 +11,12 @@ This project is about creating a webpage to visualize the poll data for both Rep
 
 
 
+
+＊ This project gets poll infomation about the 2016 Presidential Primaries and displays the data using the Huffington Post Pollster API 
+This project is about creating a webpage to visualize the poll data for both Republican candidates and Democratic candidates.
+
+
+
 ## Links to the tools
 * [jQuery](https://jquery.com)
 * [D3.js](https://d3js.org)
@@ -20,13 +26,12 @@ This project is about creating a webpage to visualize the poll data for both Rep
 
 ＊ Team Members:
 ＊ Daniel Darnold, drd436
+＊Austin Beydler, ajb6f4
 ＊
 ＊
 ＊
-＊
-=======
+
 The visualized poll data is shown in two columns. On the left, the Republican candidates' data is shown in coral and on the right, the Democratic candidates' data is shown in blue.
 
 ##Known issue
 The page occasionally doesn't load data for Democratic candidates. Temporary solution is Reflashing the page.
-
