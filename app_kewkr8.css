@@ -1,5 +1,6 @@
 body {
-    background-color: #EEE;
+
+    background-color: lavender;
 }
 #graph .choice {
     float: left;
@@ -9,13 +10,23 @@ body {
     text-align: right;
     margin: 8px 5px;
 }
-#graph .bar {
+#graph .Rep {
     width: 0;
     height: 35px;
-    background-color: coral;
+    background-color: red;
     margin: 5px;
     float: left;
 }
+
+#graph .DEM {
+    width: 0;
+    height: 35px;
+    background-color: blue;
+    margin: 5px;
+    float: left;
+}
+
+
 .group:after {
   content: "";
   display: table;
