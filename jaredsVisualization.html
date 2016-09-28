@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<style>
+	#graph {
+		background-color: black;
+	}
+</style>
+	<head>
+		<title>Presidential Primary Data 2016</title>
+		<link href="app.css" rel="stylesheet" type="text/css">
+		<script src="jquery-1.12.0.min.js"></script>
+		<script src="d3.v3.min.js"></script>
+	</head>
+	<body>
+		<div id="graph"></div>
+		<script>
+		
+			var url ="http://elections.huffingtonpost.com/pollster/api/charts/2016-new-york-presidential-democratic-primary";
+			
+			$.ajax(url, {
+				dataType: "jsonp",
+				jsonpCallback: "pollsterCallback",
+				cache: true,
+				success: function(data) {
+						var graph = d3.select("#graph");
+						graph.append("h1").classed("title", true).text("Poll Information");
+						var title = d3.select("h1");
+						title.style("color", "gold");
+	
+						var candidateBar = graph.selectAll("div").data(data.estimates),
+						candidateWrapper = candidateBar.enter().append("div").classed("group", true);
+						candidateWrapper.append("div")
+							.classed("choice", true)
+							.text(function(candidate) {
+									return candidate.choice + " " + Number(candidate.value).toFixed(2) + "%";
+							}).style("color", "white");
+						candidateWrapper.append("div")
+							.classed("bar", true)
+							.transition()
+							.duration(1000)
+							.style("width", function(candidate) {
+									return candidate.value * 10 + "px";
+							});
+							
+							var allBars = d3.selectAll("div.bar");
+							allBars.style("background-color", "gold");
+							allBars.style("border-width", "5px");
+							allBars.style("border-color", "gray");
+							allBars.style("border-style" , "solid");
+							var allNames = d3.selectAll("div.choice");
+							allNames.style("width", "400px");
+				}
+			});
+	</script>
+	</body>
+	</html>
